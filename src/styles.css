@@ -1,1 +1,352 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: Arial, sans-serif;
+    color: #2E2E36;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    height: 100vh;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+.p-home {
+    padding: 5rem;
+}
+
+.table-container {
+    background-color: white;
+    padding: 2.5rem 30px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100vw;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+th, td {
+    border-bottom: 1px solid #dfdfdf;
+    padding: 6px;
+    text-align: left;
+}
+
+.b-gray {
+    width: 100%;
+    background-color: #f4f6f9;
+}
+
+.container-home {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-search {
+    width: 15%;
+    height: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.button-add {
+    background-color: #f4dc32;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    font-weight: 600;
+}
+
+.f-paginator {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.f-select {
+    margin-right: 30px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 60px;
+}
+
+.container-modal-delete {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+}
+
+.center-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-group {
+    border: 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pichincha {
+    background-color: #f4dc32;
+}
+
+.pagination-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    color: black;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+  }
+
+.pagination-icon.left::before {
+    content: '\2190';
+}
+
+.pagination-icon.right::before {
+    content: '\2192';
+}
+
+.pagination-icon:hover {
+    background-color: #f4f6f9;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: red;
+}
+
+button {
+    margin: 10px;
+    cursor: pointer;
+}
+
+.dropdown-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 12px;
+    font-family: fangsong;
+    font-weight: 600;
+    width: 40%;
+}
+
+.types-input-group {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.error-border {
+    border: 1px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+.container-create {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+}
+
+.container-create-2 {
+    width: 50%;
+    background-color: white;
+    padding: 2rem 0;
+}
+
+.container-create-3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: fangsong;
+    font-weight: 600;
+    font-size: 2rem;
+    align-items: center;
+    gap: 15px;
+}
+
+.errCreateProduct {
+    display: flex;
+    justify-content: center;
+}
+
+.container-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.button-create-edit {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+}
+
+/* Estilos para tablet */
+@media (max-width: 768px) {
+    th, td {
+        font-size: 12px;
+    }
+
+    .container-create-2 {
+        width: 100%;
+        background-color: white;
+        padding: 2rem;
+    }
+
+    .container-form {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .form-group {
+        width: 60%;
+    }
+}
+
+/* Estilos para móvil */
+@media (max-width: 520px) {
+
+    .container {
+        padding: 20px 0;
+    }
+
+    .p-home {
+        padding: 1rem;
+    }
+
+    th, td {
+        font-size: 11px;
+    }
+
+    .container-home {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+
+    .input-search {
+        width: 50%;
+        height: 1.5rem;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+
+    .container-create-2 {
+        width: 100%;
+        background-color: white;
+        padding: 2rem;
+    }
+
+    .container-form {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .form-group {
+        width: 60%;
+    }
+}

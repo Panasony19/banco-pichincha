@@ -1,0 +1,83 @@
+<div class="p-home">
+  <div class="container-home">
+    <input type="text"
+            placeholder="Search..."
+            [(ngModel)]="searchText" (input)="searchProducts()"
+            class="input-search">
+
+    <button class="button-add" (click)="crateOrEditProduct(true)">Agregar</button>
+  </div>
+  <div *ngIf="errCreateProduct" class="error-message errCreateProduct">
+    <div>{{errCreateProductMessage}}</div>
+  </div>
+  <div class="table-container">
+    <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 100px;">Logo</th>
+            <th style="width: 150px;">Nombre del producto</th>
+            <th style="width: 250px;">Descripción <i class="fa fa-info-circle"></i></th>
+            <th style="width: 150px;">Fecha de Liberación <i class="fa fa-info-circle"></i></th>
+            <th style="width: 150px;">Fecha de Reestructuración <i class="fa fa-info-circle"></i></th>
+            <th style="width: 100px;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td><img [src]="product.logo" width="40px" height="40px"></td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description | truncate:50}}</td>
+            <td>{{ product.date_release | customDateFormat }}</td>
+            <td>{{ product.date_revision | customDateFormat }}</td>
+            <td>
+              <div class="dropdown">
+                <button class="dropdown-button">&#8942;</button>
+                <div class="dropdown-content">
+                  <a (click)="crateOrEditProduct(false, product)">Editar</a>
+                  <a (click)="openModal(product)">Eliminar</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="f-paginator">
+      <span>{{productsAll.length}} Resultados</span>
+      <div>
+
+        <!-- Selector -->
+        <select [(ngModel)]="registerByPage" (change)="changeRecordsByPage()" class="f-select">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+
+        <!-- Paginación -->
+        <button (click)="pagePrevious()"
+                [disabled]="currentPage === 1"
+                class="pagination-icon">
+          <i class="fa fa-arrow-left"></i>
+        </button>
+        <button (click)="pageNext()"
+                [disabled]="products.length < registerByPage"
+                class="pagination-icon">
+          <i class="fa fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Confirmación para eliminar un registro -->
+<div id="myModal" class="modal">
+  <div class="modal-content" *ngIf="productAction">
+    <h3>Estas seguro de eliminar el producto {{ productAction.name }}</h3>
+    <div class="container-modal-delete">
+      <button class="buttons-group" (click)="closeModal()">Cancelar</button>
+      <button class="buttons-group pichincha" (click)="confirmAction()">Confirmar</button>
+    </div>
+  </div>
+</div>

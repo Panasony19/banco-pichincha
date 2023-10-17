@@ -1,0 +1,121 @@
+<div class="container-create">
+    <div class="container-create-2">
+      <div class="container-create-3">
+        <button class="button-add" [routerLink]="['/']"><i class="fa fa-arrow-left"></i></button>
+        <span>Formulario de Registro</span>
+      </div>
+      <hr>
+      <div>
+        <div *ngIf="errCreateProduct" class="error-message errCreateProduct">
+          <div>{{errCreateProductMessage}}</div>
+        </div>
+        <form [formGroup]="formProduct" class="container-form">
+          <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text"
+                    class="types-input-group"
+                    id="id"
+                    (input)="verificationId()"
+                    formControlName="id"
+                    [ngClass]="{ 'error-border': formProduct.get('id')?.invalid && formProduct.get('id')?.touched }">
+            <div *ngIf="formProduct.get('id')?.invalid && formProduct.get('id')?.touched" class="error-message">
+              <div *ngIf="formProduct.get('id')?.hasError('required')">ID es requerido.</div>
+            </div>
+            <div *ngIf="formProduct.get('id')?.invalid" class="error-message">
+              <div *ngIf="id.errors?.minlength">Minímo 3 caracteres</div>
+            </div>
+            <div *ngIf="formProduct.get('id')?.invalid" class="error-message">
+              <div *ngIf="id.errors?.maxlength">Maximo 10 caracteres</div>
+            </div>
+            <div *ngIf="validateId" class="error-message">  
+              <div >ID es invalido.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text"
+                    class="types-input-group"
+                    id="name"
+                    [ngClass]="{ 'error-border': formProduct.get('name')?.invalid && formProduct.get('name')?.touched }"
+                    formControlName="name">
+            <div *ngIf="formProduct.get('name')?.invalid && formProduct.get('name')?.touched" class="error-message">
+              <div *ngIf="formProduct.get('name')?.hasError('required')">Nombre es requerido.</div>
+            </div>
+            <div *ngIf="formProduct.get('name')?.invalid" class="error-message">
+              <div *ngIf="name.errors?.minlength">Minímo 5 caracteres</div>
+            </div>
+            <div *ngIf="formProduct.get('name')?.invalid" class="error-message">
+              <div *ngIf="name.errors?.maxlength">Maximo 100 caracteres</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description">Descripción</label>
+            <textarea class="types-input-group"
+                      id="description"
+                      [ngClass]="{ 'error-border': formProduct.get('description')?.invalid && formProduct.get('description')?.touched }"
+                      formControlName="description"></textarea>
+            <div *ngIf="formProduct.get('description')?.invalid && formProduct.get('description')?.touched" class="error-message">
+              <div *ngIf="formProduct.get('description')?.hasError('required')">Descripción es requerido.</div>
+            </div>
+            <div *ngIf="formProduct.get('description')?.invalid" class="error-message">
+              <div *ngIf="description.errors?.minlength">Minímo 10 caracteres</div>
+            </div>
+            <div *ngIf="formProduct.get('description')?.invalid" class="error-message">
+              <div *ngIf="description.errors?.maxlength">Maximo 200 caracteres</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="logo">Logo</label>
+            <input type="text"
+                    class="types-input-group"
+                    id="logo"
+                    [ngClass]="{ 'error-border': formProduct.get('logo')?.invalid && formProduct.get('logo')?.touched }"
+                    formControlName="logo">
+            <div *ngIf="formProduct.get('logo')?.invalid && formProduct.get('logo')?.touched" class="error-message">
+              <div *ngIf="formProduct.get('logo')?.hasError('required')">Logo es requerido.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="date_release">Fecha de Liberación</label>
+            <input type="date"
+                    class="types-input-group"
+                    id="date_release"
+                    (change)="onDateReleaseChange()"
+                    [ngClass]="{ 'error-border': formProduct.get('date_release')?.invalid && formProduct.get('date_release')?.touched }"
+                    formControlName="date_release">
+            <div *ngIf="formProduct.get('date_release')?.invalid && formProduct.get('date_release')?.touched" class="error-message">
+              <div *ngIf="formProduct.get('date_release')?.hasError('required')">Fecha es requerido.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="date_revision">Fecha de Revisión</label>
+            <input type="date"
+                    class="types-input-group"
+                    id="date_revision"
+                    [ngClass]="{ 'error-border': formProduct.get('date_revision')?.invalid && formProduct.get('date_revision')?.touched }"
+                    formControlName="date_revision">
+            <div *ngIf="formProduct.get('date_revision')?.invalid && formProduct.get('date_revision')?.touched" class="error-message">
+              <div *ngIf="formProduct.get('date_revision')?.hasError('required')">Fecha es requerido.</div>
+            </div>
+          </div>
+          <div class="button-create-edit">
+              <button class="buttons-group" type="button" (click)="clearForm()">Reiniciar</button>
+              <button *ngIf="isCreateProduct" 
+                      class="buttons-group pichincha" 
+                      type="button"
+                      (click)="submitForm()"
+                      [disabled]="formProduct.invalid || validateId">
+                Enviar
+              </button>
+              <button *ngIf="!isCreateProduct" 
+                      class="buttons-group pichincha" 
+                      type="button"
+                      (click)="updateForm()"
+                      [disabled]="formProduct.invalid || validateId">
+                Editar
+              </button>
+          </div>
+        </form>              
+      </div>
+    </div>
+</div>
